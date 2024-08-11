@@ -36,7 +36,7 @@ class Options(object):
     districts = ["pudong", "minhang", "baoshan", "songjiang", "jiading", "qingpu"]
     restrict = "sf1a3a4a5p3"
     auto = 1
-    email = "anqi.huang@outlook.com"
+    email = "ci@github.com"
     token = None
     secret = None
     retry = 1
@@ -133,7 +133,8 @@ def do_job(opt):
         do_scrapy(opt.city, opt.type, district, opt.restrict)
 
     # 转存到 excel
-    msg = db2xl.save(opt.districts, opt.city, opt.restrict, 1)
+    #msg = db2xl.save(opt.districts, opt.city, opt.restrict, 1)
+    msg = "测试"
 
     tar_file.compress_file(os.path.dirname(os.path.abspath(__file__)),
                            opt.city, opt.restrict)
