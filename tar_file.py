@@ -45,11 +45,11 @@ def decompress_file(root_dir, city, restrict):
     if file:
         os.chdir(data_dir)
         cmd = "cat {file} | tar -xvzf - -C {data_dir}".format(file=file, data_dir=data_dir)
-        print("cmd = " + cmd)
+        print("decompress_file cmd = " + cmd)
 
         os.system(cmd)
         os.system("rm -rf {}".format(file))
-        print("cmd = " + file)
+        print("rm -rf " + file)
         os.chdir(root_dir)
         return True
     else:
@@ -75,7 +75,9 @@ def compress_file(root_dir, city, restrict):
                                                                             gz_name=gz_name)
     os.chdir(data_dir)
     os.system(cmd)
+    print("compress_file cmd = " + cmd)
     os.system("rm -rf {}".format(db_name))
+    print("rm -rf " + db_name)
     os.chdir(root_dir)
 
 
