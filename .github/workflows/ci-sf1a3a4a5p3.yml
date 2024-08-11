@@ -1,8 +1,8 @@
 name: Auto scrapy every day 17:00
 
 on:
-#  schedule:
-#    - cron: "0 17 * * *"
+  schedule:
+    - cron: "0 17 * * *"
 
   # allows to manually run the job at any time
   workflow_dispatch:
@@ -32,10 +32,10 @@ jobs:
 
       - name: scrapy data
         env:
-          DISTRICTS: pudong
+          DISTRICTS: pudong/minhang/baoshan/songjiang/jiading/qingpu
           TOKEN: b1616989ffea8ad5e250ffabc14c3f953ed8cfcf54823dcba957a2debc47cf58
           SECRET: SECb270cf0f7656fb041889d5cf11c726b8ad255b4e73b648c4d3b266a4e64d182a
-        run: python main.py -d $DISTRICTS -s 0 -r sf1a3a4a5p3 --token b1616989ffea8ad5e250ffabc14c3f953ed8cfcf54823dcba957a2debc47cf58 --secret SECb270cf0f7656fb041889d5cf11c726b8ad255b4e73b648c4d3b266a4e64d182a
+        run: python main.py -d $DISTRICTS -s 0 -r sf1a3a4a5p3 --token $TOKEN --secret $SECRET
 
       - name: Commit and push
         run:
@@ -43,4 +43,4 @@ jobs:
           git commit -m "sh-sf1a3a4a5p3-lianjia-$(date +"%Y-%m-%d %H:%M:%S")" &&
           git push
         env:
-          GS_TOKEN: ${{ secrets.GS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
