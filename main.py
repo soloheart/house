@@ -123,14 +123,14 @@ def do_job(opt):
 
     tar_file.decompress_file(os.path.dirname(os.path.abspath(__file__)),
                              opt.city, opt.restrict)
-    #for district in opt.districts:
+    for district in opt.districts:
         # from concurrent.futures import ProcessPoolExecutor, wait, ALL_COMPLETED
         # process_pool = ProcessPoolExecutor()
         # feature = process_pool.submit(do_scrapy, city, type, district, restrict)
         # wait([feature], return_when=ALL_COMPLETED)
         # result = feature.result()
         # process_pool.shutdown()
-        #do_scrapy(opt.city, opt.type, district, opt.restrict)
+        do_scrapy(opt.city, opt.type, district, opt.restrict)
 
     # 转存到 excel
     msg = db2xl.save(opt.districts, opt.city, opt.restrict, 1)
