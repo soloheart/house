@@ -32,7 +32,7 @@ class Lianjia(scrapy.Spider):
     DEBUG = True
     DEBUG_DATA = False
     # 打开后，只爬两页数据，所有提交之前一定不要打开。
-    DEBUG_PAGE = True
+    DEBUG_PAGE = False
 
     def __init__(self, **kwargs):
         super().__init__(name=None, **kwargs)
